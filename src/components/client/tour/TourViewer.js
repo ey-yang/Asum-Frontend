@@ -346,7 +346,7 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
                         <Image
                             width={686}
                             height={450}
-                            src={`http://localhost:3000/${Images[0].src}`}
+                            src={`http://188.166.187.90:80/${Images[0].src}`}
                             style={{margin:'1rem 0'}}
                         />
                         

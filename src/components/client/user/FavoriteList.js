@@ -119,7 +119,7 @@ const FavoriteList = ({ favorites, tours, loading, error, user, tourId }) => {
               <Link to={`/tour/${tour.id}`}>
                 <CardMedia
                   className="cardMedia"
-                  image={`http://localhost:3000/${tour.Images[0].src}`}/* "https://source.unsplash.com/random" */
+                  image={`http://128.199.171.26:3000/${tour.Images[0].src}`}/* "https://source.unsplash.com/random" */
                   title="Image title"
                   />
               </Link>
