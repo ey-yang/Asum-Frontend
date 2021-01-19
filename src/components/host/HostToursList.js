@@ -117,7 +117,7 @@ const HostToursList = ({ hostToursList, hostToursListError, loading, onEdit, onR
             <Image
                 width={180}
                 height={110}
-                src={`http://127.0.0.1:3000/${tours.Images[0].src}`}
+                src={`http://128.199.171.26:3000/${tours.Images[0].src}`}
             />
             }
         >
