@@ -569,12 +569,12 @@ A. 프립을 구매하시면 카카오톡 또는 문자로 호스트님의 연�
                                     <Avatar /* size="small"*/ icon={<UserOutlined />} /> 
                                     &nbsp; 해녀의 부엌 
                                 </div>
-                                    <a href="#!">
+                                    <Link to="/tour/inquiry">
                                 <div style={{display:'flex', alignItems:'center', flexDirection:'row'}}>
                                     <MailOutlined style={{fontSize:'1rem'}} />
                                     <div style={{fontSize:'0.95rem', marginLeft:'0.3rem'}}>문의하기</div>
                                 </div>
-                                    </a>
+                                    </Link>
                             </HostTitleBox>
                         </BookingBox>
                     </Affix>
