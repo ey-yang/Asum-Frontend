@@ -108,7 +108,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.2.36:3065",
+  "proxy": "http://188.166.187.90:80",
   "jest": {
     "roots": [
       "<rootDir>/src"
