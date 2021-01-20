@@ -5,6 +5,7 @@ import 'moment/locale/ko';
 import { Input, Avatar } from 'antd';
 
 
+
 const { TextArea } = Input;
  
 const InquiryBlock = styled.div`
@@ -166,6 +167,10 @@ const tourphoto = require('../../../image/foodtour.png');
 
 
 const Inquiry = () => {
+    
+    const goBack = () => {
+        window.history.back();
+    }
 
     return (
         <InquiryBlock>
@@ -174,13 +179,13 @@ const Inquiry = () => {
             </div>
             <InquiryListBox>
                 <div className="hostbox">
-                    <Avatar
+                    {/* <Avatar
                         size={30}
                         src={tourphoto}
                         className="avatarimg"
-                    />
+                    /> */}
                     <div className="tourtitle">
-                        해녀의 부엌 님에게 문의하기
+                        호스트님에게 문의하기
                     </div>
                 </div>
 
@@ -193,7 +198,12 @@ const Inquiry = () => {
                 </div>
 
                 <div className="btnBox"style={{display:'flex'}}>
-                    <button className="cancelBtn">취소하기</button>
+                
+                    <button 
+                        className="cancelBtn"
+                        onClick={goBack}
+                    >취소하기</button>
+                
                     <button className="saveBtn">등록하기</button>
                 </div>
 

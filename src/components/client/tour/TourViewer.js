@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Affix, Avatar, ConfigProvider, Comment, Tooltip, Image, Row, Col, DatePicker } from 'antd';
 import moment from 'moment';
@@ -9,7 +9,7 @@ import Button from '../../common/Button';
 import CounterContainer from '../../../containers/common/CounterContainer';
 import 'moment/locale/ko';
 import locale from 'antd/es/date-picker/locale/ko_KR';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
@@ -114,7 +114,9 @@ const TourMaterials = styled.div`
 `;
 
 const SideMenuBlock = styled.div`
-    /* height: 300px; */
+    .affixBlock {
+        height: 300px;
+    }
 `;
 const AffixHelper = styled.div`
     margin-top: 154rem;
@@ -308,12 +310,7 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
     function handleChange(value) {
       }
 
-    /* const Styles = makeStyles((theme) => ({
-    
-        selectEmpty: {
-          marginTop: theme.spacing(2),
-        },
-    })); */
+    /* const [container, setContainer] = useState(null); */
 
     const { title, about, Images, price, option } = tour;
 
@@ -358,7 +355,7 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
                                     <StarRateRoundedIcon style={{fontSize:'2rem'}} />4.9 &nbsp;
                                 </div>
                                 
-                                <div className="reviewCount">&middot; &nbsp;후기 3개</div>
+                                <div className="reviewCount">&middot; &nbsp;후기 1개</div>
                                 
                             </div>
                             <div style={{padding:'1rem'}}>
@@ -397,11 +394,11 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
                                     }
                                 />
                             </div>
-                            <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
+                            {/* <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
                                 <button className="watchReviewsBtn">
                                     후기 전체 보기
                                 </button>
-                            </div>
+                            </div> */}
                         </ReviewPreviewBox>
 
                         <hr width="100%" color="#CED4DA" size="1"/>
@@ -509,9 +506,12 @@ A. 프립을 구매하시면 카카오톡 또는 문자로 호스트님의 연�
                     </tourMainBlock>
                 </Col>
                 <Col span={8}>
+                    
                     <SideMenuBlock>
                     <AffixHelper />
-                    <Affix /* offsetTop={100} */ offsetBottom={320}>
+                    {/* <div className="affixBlock" ref={setContainer}> */}
+                                 
+                    <Affix offsetBottom={300} /* offsetTop={100} target={() => container} */>
                         <BookingBox>
                             <TourPrice>
                                 <div className="tour-price">{Number(price).toLocaleString()} 원</div>
@@ -578,7 +578,10 @@ A. 프립을 구매하시면 카카오톡 또는 문자로 호스트님의 연�
                             </HostTitleBox>
                         </BookingBox>
                     </Affix>
+                    {/* </div> */}
+                   
                     </SideMenuBlock>
+                    
                 </Col>
             </Row>
         </TourViewerBlock>
