@@ -70,9 +70,11 @@ const RegisterFormContainer = ({ history }) => {
         if (auth) {
             console.log('회원가입 성공');
             console.log(auth);
-            dispatch(fullState());
+            alert ("회원가입이 완료되었습니다. 로그인해주세요.")
+            history.push('/');
+            /* dispatch(fullState()); */
         }
-    }, [auth, authError, dispatch]);
+    }, [auth, authError, history]);
 
     // user 값이 잘 설정되었는지 확인
     useEffect(() => {
