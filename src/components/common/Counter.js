@@ -24,7 +24,11 @@ const Counter = React.memo(({ number, onIncrease, onDecrease }) => {
   return (
     <div>
       <CounterBlock>
-        <FiMinusCircle className="counterBtn" onClick={onDecrease} />
+        {number === 1 ?
+          <FiMinusCircle className="counterBtn" />
+          : <FiMinusCircle className="counterBtn" onClick={onDecrease} />
+        }
+        {/* <FiMinusCircle className="counterBtn" onClick={onDecrease} /> */}
             <h3>{number}</h3>
         <FiPlusCircle className="counterBtn" onClick={onIncrease} />
       </CounterBlock>

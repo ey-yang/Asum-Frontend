@@ -16,7 +16,8 @@ const TourManagementBlock = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 1rem;    
+    padding-top: 1rem;
+    margin-top: 1.5rem;    
     .title {
         font-size: 1.6rem;
         font-weight: 750;
@@ -24,7 +25,7 @@ const TourManagementBlock = styled.div`
     }
     .btns {
         width: 750px;
-        margin-top: 1.3rem;
+        margin-top: 0.3rem;
         display: flex;
     }
     .reservedBtn {

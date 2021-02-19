@@ -14,7 +14,7 @@ const AllBlock = styled.div`
 `;
 
 const Title = styled.div`
-    margin: 1.2rem 0 1.5rem 3rem;
+    margin: 2.5rem 0 1.5rem 3rem;
     font-size: 1.5rem;
     font-weight: 900;
     color: ${palette.gray[8]};
@@ -146,7 +146,8 @@ const columns = [
     },
     {
          title: '수수료',
-         dataIndex: 'addTwo',
+         dataIndex: 'commission',
+         key: 'commission',
          /* sorter: {
              compare: (a, b) => a.addTwo - b.addTwo,
              multiple: 1,
@@ -154,7 +155,8 @@ const columns = [
      },
     {
          title: '정산 금액',
-         dataIndex: 'addThree',
+         dataIndex: 'remittance',
+         key: 'remittance',
          /* sorter: {
              compare: (a, b) => a.addThree - b.addThree,
              multiple: 1,
@@ -162,7 +164,8 @@ const columns = [
      },
     {
          title: '정산일',
-         dataIndex: 'phoneNumber',
+         dataIndex: 'payment_date',
+         key: 'payment_date'
      },
   ];
 
@@ -189,7 +192,19 @@ const columns = [
 //     setProduct(value);
 //   }, [])
 
-
+const data = [
+  {
+    key: '1',
+    tour_date: '2020-12-31',
+    title: '[구좌] 제주 해녀의 부엌',
+    username: '홍길동',
+    qty: '1',
+    total_price: '55,000',
+    commission: '5,500',
+    remittance: '49,500',
+    payment_date: '2021-01-05'
+  }
+]
 
 if (hostSalesListError) {
   return <Content>
@@ -264,7 +279,7 @@ if (hostSalesListError) {
                 </div> 
 
                 {!loading && hostSalesList && (
-                <Table columns={columns} dataSource={hostSalesList} rowKey={row=>row.id} onChange={onColumnsChange} />
+                <Table columns={columns} dataSource={data} rowKey={row=>row.id} onChange={onColumnsChange} />
                 )}
                 {/* 검색함수 value값 연습해봄 */}
                 {/* {product && <Table columns={columns} dataSource={data} onChange={onChange} />} */}

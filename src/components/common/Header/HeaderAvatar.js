@@ -66,49 +66,105 @@ const HeaderAvatar = ({ onLogout, user }) => {
       <Button disableFocusRipple disableRipple aria-controls="simple-menu" aria-haspopup="true" className="avatarBtn" onClick={handleClick}>
         <Avatar size="large" src={`http://128.199.171.26:3000/${user.image}`} icon={<UserOutlined />} />
       </Button>
-      <StyledMenu
-        id="customized-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <Link to={'/account'} style={{ color: "#323232" }}>
-          <MenuItem>
-            <ListItemIcon>
-              <AccountCircleOutlinedIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="내 정보" />
-          </MenuItem>
-        </Link>
-        <Link to={'/tour/management/'} style={{ color: "#323232" }}>
-          <MenuItem>
-            <ListItemIcon>
-              <AssignmentOutlinedIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="예약 내역" />
-          </MenuItem>
-        </Link>
-        <Link to={'/tour/management/past'} style={{ color: "#323232" }}>
-          <MenuItem>
-            <ListItemIcon>
-              <ChatOutlinedIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="여행 후기" />
-          </MenuItem>
-        </Link>
-        <Link to={'/account/favorite'} style={{ color: "#323232" }}>
-        <MenuItem>
-          <ListItemIcon>
-            <FavoriteBorderOutlinedIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="관심 여행" />
-        </MenuItem>
-        </Link>
-        <MenuItem onClick={ onLogout }>
-          로그아웃
-        </MenuItem>
-      </StyledMenu>
+      {user.host_approval !== true ?
+         (<StyledMenu
+            id="customized-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <Link to={'/account'} style={{ color: "#323232" }}>
+              <MenuItem>
+                <ListItemIcon>
+                  <AccountCircleOutlinedIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="내 정보" />
+              </MenuItem>
+            </Link>
+            <Link to={'/tour/management/'} style={{ color: "#323232" }}>
+              <MenuItem>
+                <ListItemIcon>
+                  <AssignmentOutlinedIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="예약내역" />
+              </MenuItem>
+            </Link>
+            <Link to={'/tour/management/past'} style={{ color: "#323232" }}>
+              <MenuItem>
+                <ListItemIcon>
+                  <ChatOutlinedIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="여행후기" />
+              </MenuItem>
+            </Link>
+            <Link to={'/account/favorite'} style={{ color: "#323232" }}>
+            <MenuItem>
+              <ListItemIcon>
+                <FavoriteBorderOutlinedIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="관심여행" />
+            </MenuItem>
+            </Link>
+            <Link to={'/host/apply'} style={{ color: "#323232" }}>
+            <MenuItem>
+              <ListItemText primary="호스트 신청하기" />
+            </MenuItem>
+            </Link>
+            <MenuItem onClick={ onLogout }>
+              로그아웃
+            </MenuItem>
+          </StyledMenu>
+        ) : (
+            <StyledMenu
+            id="customized-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <Link to={'/account'} style={{ color: "#323232" }}>
+              <MenuItem>
+                <ListItemIcon>
+                  <AccountCircleOutlinedIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="내 정보" />
+              </MenuItem>
+            </Link>
+            <Link to={'/tour/management/'} style={{ color: "#323232" }}>
+              <MenuItem>
+                <ListItemIcon>
+                  <AssignmentOutlinedIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="예약내역" />
+              </MenuItem>
+            </Link>
+            <Link to={'/tour/management/past'} style={{ color: "#323232" }}>
+              <MenuItem>
+                <ListItemIcon>
+                  <ChatOutlinedIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="여행후기" />
+              </MenuItem>
+            </Link>
+            <Link to={'/account/favorite'} style={{ color: "#323232" }}>
+            <MenuItem>
+              <ListItemIcon>
+                <FavoriteBorderOutlinedIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="관심여행" />
+            </MenuItem>
+            </Link>
+            <Link to={'/host/tours'} style={{ color: "#323232" }}>
+            <MenuItem>
+              <ListItemText primary="호스트 페이지" />
+            </MenuItem>
+            </Link>
+            <MenuItem onClick={ onLogout }>
+              로그아웃
+            </MenuItem>
+          </StyledMenu>
+        )}
     </AvatarDiv>
   );
 }

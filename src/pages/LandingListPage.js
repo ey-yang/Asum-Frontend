@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderContainer from '../containers/common/HeaderContainer';
 import LandingList from '../components/client/tours/LandingList';
-import Footer from '../components/common/Footer';
+import LilFooter from '../components/common/LilFooter';
 import TourListContainer from '../containers/tours/TourListContainer'
 
 
@@ -12,7 +12,7 @@ const LandingListPage = () => {
             <HeaderContainer />
             <LandingList />
             <TourListContainer />
-            <Footer />
+            <LilFooter />
         </>
     );
 };

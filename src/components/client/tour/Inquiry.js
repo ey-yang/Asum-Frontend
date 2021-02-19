@@ -9,20 +9,19 @@ import { Input, Avatar } from 'antd';
 const { TextArea } = Input;
  
 const InquiryBlock = styled.div`
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
+ 
     /* flex로 내부 내용 중앙 정렬 */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 1rem;    
+    height: 100%;
     .title {
         font-size: 1.6rem;
         font-weight: 750;
         width: 750px;
+        margin-top: 1.5rem;
     }
 `;
 
@@ -45,7 +44,7 @@ const InquiryListBox = styled.div`
     /* display: flex; */
     /* justify-content: center;
     align-items: center; */
-    margin: 1rem 0 7rem 0;
+    margin: 1rem 0 0 0;
     width: 750px;
     /* height: 500px; */
     border: 1px solid ${palette.gray[3]};

@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderContainer from '../../containers/common/HeaderContainer';
 import PastTour from '../../components/client/user/PastTour';
-import Footer from '../../components/common/Footer';
+import LilFooter from '../../components/common/LilFooter';
 
 
 const PastTourPage = () => {
@@ -11,7 +11,7 @@ const PastTourPage = () => {
             
                 <PastTour />
             
-            <Footer />
+            <LilFooter />
         </>
     );
 };

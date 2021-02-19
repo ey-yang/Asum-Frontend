@@ -15,7 +15,8 @@ const PastTourBlock = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 1rem;    
+    padding-top: 1rem;  
+    margin-top: 1.5rem;
     .title {
         font-size: 1.6rem;
         font-weight: 750;
@@ -23,7 +24,7 @@ const PastTourBlock = styled.div`
     }
     .btns {
         width: 750px;
-        margin-top: 1.3rem;
+        margin-top: 0.3rem;
         display: flex;
     }
     .pastBtn {
@@ -176,7 +177,7 @@ const PastTour = () => {
                     />
                     <div className="tourinfo">
                         <div className="tourtitle">
-                            [제주 구좌] 제주 해녀와 함께하는 특별한 '해녀 다이닝'
+                            [구좌] 제주 해녀의 부엌
                         </div>
                         <div className="touroption">
                             <div>

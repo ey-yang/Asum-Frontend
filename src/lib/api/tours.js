@@ -1,10 +1,12 @@
 import qs from 'qs';
 import client from './client';
 
+
 export const writeTour = ({ title, about, tags, images, price }) =>
     client.post('/api/user/landing', {title, about, tags, images, price });
 
 export const readTour = id => client.get(`/api/tours/${id}`);
+
 
 export const listTours = ({ page, email, tag, image, price }) => {
     const queryString = qs.stringify({

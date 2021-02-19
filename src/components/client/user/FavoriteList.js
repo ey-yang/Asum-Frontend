@@ -21,7 +21,8 @@ const FavoriteListBlock = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* padding-top: 4rem;   */  
+    margin-top: 2.5rem;
+    margin-bottom: 16rem;
 `;
 
 const TourListBlock = styled.div`
@@ -36,7 +37,7 @@ const Tilte = styled.div`
   font-size: 1.5rem;
   font-weight: 900;
   color: ${palette.gray[8]};
-  margin: 2rem;
+  margin: 1rem;
 `;
 
 const TourListBox = styled.div`

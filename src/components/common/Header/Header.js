@@ -6,18 +6,23 @@ import { Link } from 'react-router-dom';
 import palette from '../../../lib/styles/palette';
 import HeaderAvatar from './HeaderAvatar'
 import { withRouter } from 'react-router-dom';
+import { message } from 'antd';
 
 const HeaderBlock = styled.div`
     position: fixed;
     width: 100%;
     background: white;
     z-index: 100;
+    /* border-bottom: 1px solid ${palette.gray[3]}; */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06);
 `;
 
 /**
  * Responsive 컴포넌트의 속성에 스타일을 추가해서 새로운 컴포넌트 생성
  */
-const Wrapper = styled(HeaderResponsive)`
+const Wrapper = styled.div`
+    margin: 0 auto;
+    width: 1030px;
     height: 5rem;
     display: flex;
     align-items: center;
@@ -47,7 +52,7 @@ const Wrapper = styled(HeaderResponsive)`
  * 헤더가 fixed로 되어 있기 때문에 페이지의 콘텐츠가 4rem 아래에 나타나도록해 주는 컴포넌트
  */
 const Spacer = styled.div`
-    height: 6rem;
+    height: 4rem;
 `;
 
 const UserInfo = styled.div`
@@ -70,6 +75,10 @@ const HeaderMenu = styled.div`
 
 const Header = ({ user, onLogout }) => {
 
+    const onclick = () => {
+        return message.info('로그인이 필요합니다.');
+    }
+
     return (
         <>
             <HeaderBlock>
@@ -80,22 +89,28 @@ const Header = ({ user, onLogout }) => {
                         
                         {user ? ( user && user.host_approval !== true ?
                             (<div className="right">
-                                <Link to="/host/apply">
-                                     <HeaderMenu>호스트 신청</HeaderMenu>
+                                <Link to="/tour/management">
+                                     <HeaderMenu>예약내역</HeaderMenu>
+                                </Link>
+                                <Link to="/account/favorite">
+                                     <HeaderMenu>관심여행</HeaderMenu>
                                 </Link>
                                 <HeaderAvatar onLogout={onLogout} user={user} /* image={image} */ />
                                 {/* <UserInfo>{user.username}</UserInfo> */}
                             </div>)
                             : ( <div className="right">
-                            <Link to="/host/tours">
-                                <HeaderMenu>호스트 페이지</HeaderMenu>
-                            </Link>
+                                <Link to="/tour/management">
+                                     <HeaderMenu>예약내역</HeaderMenu>
+                                </Link>
+                                <Link to="/account/favorite">
+                                     <HeaderMenu>관심여행</HeaderMenu>
+                                </Link>
                             <HeaderAvatar onLogout={onLogout} user={user} /* image={image} */ />
                             {/* <UserInfo>{user.username}</UserInfo> */}
                             </div>)
                         ) : (
                             <div className="right">
-                                <Link to="/host/apply">
+                                <Link to="/auth/login" onClick={onclick}>
                                     <HeaderMenu>호스트 신청</HeaderMenu>
                                 </Link>
                                 <Link to="/auth/login">

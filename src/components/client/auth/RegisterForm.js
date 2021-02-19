@@ -227,7 +227,7 @@ const ErrorMessage = styled.div`
                     )}
                         {error && <ErrorMessage>{error}</ErrorMessage>}
                         <div className="regiTerms">
-                            회원가입을 클릭함으로써, 어썸의 <Link to='#'>서비스 이용 약관,</Link> <Link to='#'>개인정보 처리방침</Link>에 동의하게 됩니다.
+                            회원가입을 클릭함으로써, 어썸의 <a className="atag" target="_blank" href="https://www.notion.so/029f6ddeb2de49fbbf8b960863127f9f">서비스 이용 약관,</a> <a className="atag" target="_blank" href="https://www.notion.so/11914de655f44ed3b0082a407ac32d66">개인정보 처리방침</a>에 동의하게 됩니다.
                         </div>
                         <ButtonWidthMarginTop fullWidth cyan>
                             회원가입

@@ -40,9 +40,12 @@ const FooterBox = styled.div`
 
 const Footer = () => {
     return(
-        
+       
         <FooterBlock>
-            <FooterBox>
+          상호: 지붕 뚫은 친구들 | 대표: 김선재 | 개인정보관리책임자: 김선재 | 전화: 070-8825-0227 | 이메일: <a href="mailto:roofkicker1@gmail.com">roofkicker1@gmail.com</a>
+          <br/>
+          주소: 경기도 고양시 일산동구 정발산로 15, 4층 408호 (장항동, 드림월드빌딩) | 사업자등록번호: 867-23-01167 
+            {/* <FooterBox>
                 <Row>
                     <Col span={12}>
                       <h2>ASUM Table</h2>
@@ -82,7 +85,7 @@ const Footer = () => {
                   <Col span={12}></Col>
                   <Col span={12}></Col>
               </Row>
-            </ FooterBox>
+            </ FooterBox> */}
         </FooterBlock>
     )
 }

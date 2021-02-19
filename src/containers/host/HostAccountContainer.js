@@ -10,10 +10,11 @@ import axios from 'axios';
 const HostAccountContainer = () => {
 
     const dispatch = useDispatch();
-    const { form, host, hostError } = useSelector(({ host }) => ({
+    const { form, host, hostError, user } = useSelector(({ host, user }) => ({
         form: host.account,
         host: host.host,
-        hostError: host.hostError
+        hostError: host.hostError,
+        user: user.user
     }));
 
     const onChange = e => {
@@ -94,6 +95,7 @@ const HostAccountContainer = () => {
             onChangeImage={onChangeImage}
             hostImage={hostImage}
             onSubmit={onSubmit}
+            user={user}
         />
         </>
     )

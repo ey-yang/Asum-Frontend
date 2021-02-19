@@ -218,7 +218,12 @@ const AsumCheckbox = withStyles({
   })((props) => <Checkbox color="default" {...props} />);
 
 
-const Payment = () => {
+const Payment = ({
+    tour,
+    date,
+    number,
+    user,
+}) => {
 
     const [value, setValue] = useState('female');
 
@@ -242,15 +247,15 @@ const Payment = () => {
                     <img
                         width={120}
                         height={90}
-                        src={tourphoto}
+                        src={`http://188.166.187.90:80/${tour.Images[0].src}`}
                         className="tourimg"
                     />
                     <div className="tourinfo">
                         <div className="tourtitle">
-                            [제주 구좌] 제주 해녀와 함께하는 특별한 '해녀 다이닝'
+                            {tour.title}
                         </div>
                         <div className="touroption">
-                            제주 해녀 다이닝(연극&식사) / 1인
+                            {tour.option}
                         </div>
                         <div className="selected">
                             <div style={{display:'flex'}}>
@@ -258,17 +263,18 @@ const Payment = () => {
                                     <CalendarOutlined
                                         style={{marginRight: '0.3rem'}}
                                     />
-                                    <span>2020-12-31</span>
+                                    <span>{date}</span>
                                 </div>
                                 <div>
                                     <UserOutlined 
                                         style={{marginRight: '0.3rem'}}
                                     />
-                                    <span>인원수 x 1</span>
+                                    <span>인원수 x {number}</span>
                                 </div>
                             </div>
                             <div style={{fontSize: '1.1rem'}}>
-                                5,5000 원
+                            {
+                            Number(tour.price * number).toLocaleString()} 원
                             </div>
                         </div>
                     </div>
@@ -340,7 +346,8 @@ const Payment = () => {
                 <div className="description">
                     <div className="discountinfo">
                         <div>상품 금액</div>
-                        <div>5,5000 원</div>
+                        <div>{
+                            Number(tour.price * number).toLocaleString()} 원</div>
                     </div>
                     
                     <hr width="100%" color="#DEE2E6" size="1"/>
@@ -402,14 +409,13 @@ const Payment = () => {
                         <div>-0 원</div>
                     </div>
 
-
-
                 </div>
                 <div className="paymentPrice">
                     <div className="paymentInfo">
                         <div>최종 결제 금액</div>
-                        <div style={{fontSize: '1.5rem'}}>55,000 원</div>
-                    </div>
+                        <div style={{fontSize: '1.5rem'}}>{
+                            Number(tour.price * number).toLocaleString()}   원</div>
+                        </div>
                 </div>
             </DescripBox>
             <PaymentOptionBox>
@@ -452,7 +458,8 @@ const Payment = () => {
                     </div>
                     <div>
                         <button className="paymentBtn">
-                            55,000원 결제 하기
+                        {
+                            Number(tour.price * number).toLocaleString()} 원 결제 하기
                         </button>
                     </div>
                 </div>

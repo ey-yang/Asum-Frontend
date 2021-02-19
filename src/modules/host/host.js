@@ -57,10 +57,10 @@ const initialState = {
         personal_information: false,
     },
     account: {
-        host_name: '',
-        host_phone: '',
+        host_name: '어썸태이블',
+        host_phone: '01099999999',
         business_type: '개인',
-        about: '',
+        about: '안녕하세요.',
         contract: false,
         personal_information: false,
     },

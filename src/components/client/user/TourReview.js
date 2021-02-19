@@ -4,7 +4,8 @@ import palette from '../../../lib/styles/palette';
 import 'moment/locale/ko';
 import { Link } from 'react-router-dom';
 import { CalendarOutlined, UserOutlined } from '@ant-design/icons';
-import { Rate,Upload, Button, Input } from 'antd';
+import { Rate, Upload, Button, Input, Image } from 'antd';
+
 
 
 const { TextArea } = Input;
@@ -19,7 +20,8 @@ const TourReviewBlock = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 1rem;    
+    padding-top: 1rem;
+    margin-top: 2rem;
     .title {
         font-size: 1.6rem;
         font-weight: 750;
@@ -134,6 +136,8 @@ const TourReviewListBox = styled.div`
         margin-right: 8px;
     }
     .btn {
+        justify-content: center;
+        align-items: center;
         font-size: 0.8rem;
         font-weight: 650;
         color: ${palette.cyan[5]};
@@ -142,9 +146,31 @@ const TourReviewListBox = styled.div`
         outline: 0;
         box-shadow: none;
         border-radius: 3px;
-        cursor: pointer;
+        padding-top: 4.5px;
         background-color: white;
         border: 1.5px solid ${palette.cyan[5]};
+    }
+    .labelBtn {
+        cursor: pointer;
+        margin: 0 0 0 16px;
+        
+    }
+    .upload-hidden {
+        position: absolute; 
+        width: 1px; 
+        height: 1px; 
+        padding: 0; 
+        margin: -1px; 
+        overflow: hidden; 
+        clip:rect(0,0,0,0); 
+        border: 0;
+    }
+    .upload-name {
+        display: inline-block; 
+        padding: .5em .75em; /* label의 패딩값과 일치 */ 
+        font-size: inherit; 
+        font-family: inherit; 
+        line-height: normal; vertical-align: middle; background-color: #f5f5f5; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em; -webkit-appearance: none; /* 네이티브 외형 감추기 */ -moz-appearance: none; appearance: none;
     }
     .btnBox {
         display: flex;
@@ -197,15 +223,18 @@ const PaymentTitleBox = styled.div`
 
 
 const tourphoto = require('../../../image/foodtour.png');
-
-
-
-
-
-
+const uploadImage = require('../../../image/2021-02-17_20-18-26.png');
 
 
 const TourReview = () => {
+
+    const [imageState, setImageState] = useState(false);
+
+const showImage = (e) => {
+    if (e) {
+        setImageState(true);
+    };
+};
 
     return (
         <TourReviewBlock>
@@ -233,7 +262,7 @@ const TourReview = () => {
                     />
                     <div className="tourinfo">
                         <div className="tourtitle">
-                            [제주 구좌] 제주 해녀와 함께하는 특별한 '해녀 다이닝'
+                            [구좌] 제주 해녀의 부엌
                         </div>
                         <div className="touroption">
                             <div>
@@ -283,11 +312,12 @@ const TourReview = () => {
                     <div style={{marginRight: '4rem'}}>
                         여행후기
                     </div>
-                    <TextArea
+                    <textarea
                         rows="8"
                         className="textarea"
                         showCount
                         maxLength={1100}
+                        /* resize="none" */
                         placeholder="후기를 남겨주세요. 자세한 여행후기는 여행자에게도 판매자에게도 많은 도움이 됩니다 :)" />
                 </div>
 
@@ -298,14 +328,25 @@ const TourReview = () => {
                         사진첨부
                     </div>
                     <div style={{width: '34rem', /* height: '545px' */}}>
-                        <Upload
-                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                            listType="picture"
-                            
-                            className="upload-list-inline"
-                        >
-                            <Button className="btn" >사진 첨부하기</Button>
-                        </Upload>
+                        <div className="btn">
+                            <label className="labelBtn" for="ex_filename">
+                                사진 첨부하기
+                            </label>
+                        </div>
+                        <input type="file" id="ex_filename" className="upload-hidden" onChange={showImage} />
+
+                        {imageState &&
+                            <Image
+                                style={{width: 150, marginTop: '20px'}}
+                                src={uploadImage}
+                                preview={false}
+                            />
+                        }
+
+                        {/* <input className="upload-name" value="파일선택" disabled="disabled" /> */}
+
+                            {/* <Button className="btn" >사진 첨부하기</Button> */}
+                        
                     </div>
                 </div> 
                 
@@ -313,7 +354,9 @@ const TourReview = () => {
 
                 <div className="btnBox"style={{display:'flex'}}>
                     <button className="cancelBtn">취소하기</button>
-                    <button className="saveBtn">등록하기</button>
+                    
+                    <button className="saveBtn"><a style={{color:'white'}} href='/tour/1'>등록하기</a></button>
+                    
                 </div>
 
 

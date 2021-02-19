@@ -37,12 +37,12 @@ const SideMenu = () => {
     return (
         <SideMenuBlock>
             {user.host_approval !== true ? (
-                    <div className="side__menu">
-                        <Link to="/host/apply">호스트 등록</Link>
+                    <div className="side__menu" style={{marginTop: "2rem"}}>
+                        <Link to="/host/apply">호스트 신청</Link>
                     </div>
                 ) : (
                     <div>
-                    <div className="side__menu">
+                    <div className="side__menu" style={{marginTop: "2rem"}}> 
                         <Link to="/host/tours">상품 관리</Link>
                     </div>
                     <div className="side__menu">

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Button from '../../common/Button';
 import palette from '../../../lib/styles/palette';
 import { CgSearch } from 'react-icons/cg';
-import { DatePicker, Select, Image } from 'antd';
+import { DatePicker, Select, Image, Carousel } from 'antd';
 import 'antd/dist/antd.css';
 import BarResponsive from '../../common/BarResponsive';
 
@@ -28,7 +28,7 @@ const ImageBox = styled.div`
     margin-bottom: 3rem;
 `;
 
-const SearchBar = styled(BarResponsive)`
+/* const SearchBar = styled(BarResponsive)`
     display: flex;
     flex-direction: row;
     border: 3px solid ${palette.cyan[3]};
@@ -66,15 +66,27 @@ const SearchBar = styled(BarResponsive)`
         color: white;
         
     }
-`;
+`; */
 
 const Title = styled.div`
     font-weight: 710;
     width: 930px;
     font-size: 1.3rem;
-    margin-bottom: 0.3rem;
-
+    margin: 2rem 0 0.3rem 0;
 `;
+
+const CarouselBox = styled.div`
+    width: 950px;
+    height: 410px;
+`;
+
+const contentStyle = {
+    height: '160px',
+    color: '#fff',
+    lineHeight: '160px',
+    textAlign: 'center',
+    background: '#364d79',
+};
 
 const { Option } = Select;
 
@@ -92,7 +104,7 @@ const LandingList = () => {
         
         <LandingListBlock>
             
-            <SearchBar>
+            {/* <SearchBar>
                 <Select
                     className="selectBar"
                     bordered={false}
@@ -114,13 +126,33 @@ const LandingList = () => {
                 <Button className="searchBtn" >
                     <CgSearch className="searchIcon" />
                 </Button>
-            </SearchBar>
-            <ImageBox>
+            </SearchBar> */}
+            {/* <ImageBox>
+                <Image
+                    width={950}
+                    height={410}
+                    src={landingimg} />
+            </ImageBox> */}
+            <CarouselBox>
+                {/* <Carousel autoplay> */}
+                    <div>
                     <Image
-                        width={950}
-                        height={410}
-                        src={landingimg} />
-            </ImageBox>
+                    preview={false}
+                    width={950}
+                    height={410}
+                    src={landingimg} />
+                    </div>
+                    {/* <div>
+                    <h3 style={contentStyle}>2</h3>
+                    </div>
+                    <div>
+                    <h3 style={contentStyle}>3</h3>
+                    </div>
+                    <div>
+                    <h3 style={contentStyle}>4</h3>
+                    </div> */}
+                {/* </Carousel> */}
+            </CarouselBox>
             <Title>
                 추천 푸드투어
             </Title>

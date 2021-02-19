@@ -15,11 +15,12 @@ import { Link } from 'react-router-dom';
 
 
 const AccountBlock = styled(Responsive)`
-    margin-top: 4rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
     padding: 0rem 8.5rem;
     display: flex;
     flex-direction: column;
-    margin-bottom: 5rem;
+    margin-bottom: 11.6rem;
     .namebox {
         margin: 1.5rem 0rem 1.5rem 0rem;
         font-size: 0.96rem;

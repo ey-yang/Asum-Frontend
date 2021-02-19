@@ -6,11 +6,28 @@ import 'antd/dist/antd.css';
 import { Row, Col, Input, Radio, Form, Checkbox, Typography, Avatar } from 'antd';
 import palette from '../../lib/styles/palette';
 
+const AllBlock = styled.div`
+    .textarea {
+        width: 24.5rem;
+    }
+`;
+
+const Title = styled.div`
+    margin: 2.5rem 0 1.5rem 3rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: ${palette.gray[8]};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
 const Content = styled.div`
-    flex: 0 1 50%;
-    margin: 3% 0 3% 3%;
+    /* flex: 0 1 50%; */
+    width: 600px;
+    margin: 1rem 0 3rem 2.5rem;
     border: 1px solid ${palette.gray[4]};
-    height: 100%;
+    padding-left: 1rem;
 `;
 
 const HostAccountBlock = styled(Form)`
@@ -36,7 +53,7 @@ const textMap = {
     apply: '작성 완료',
 };
 
-const HostAccountForm = ({type, form, onChange, onChangeImage, onSubmit , hostImage}) => {
+const HostAccountForm = ({type, form, onChange, onChangeImage, onSubmit , hostImage, user}) => {
     
     const text = textMap[type];
 
@@ -63,19 +80,22 @@ const HostAccountForm = ({type, form, onChange, onChangeImage, onSubmit , hostIm
 
 
     return (
-        
+        <AllBlock>
+        <Title>
+            계정 관리
+        </Title>
         <Content>
         <HostAccountBlock encType="multipart/form-data" onFinish={onSubmit} >
-            <RowFirst>
+            {/* <RowFirst>
                 <Col style={{ marginTop: '6%' }} md={2}><label>사진</label></Col>
                 <Col md={6} offset={2}>
-                    {hostImage !== null ? <Avatar size={120} src={hostImage} /> : <Avatar size={120} icon={<UserOutlined />} />}
+                     <Avatar size={80} src={`http://128.199.171.26:3000/${user.image}`} icon={<UserOutlined />} />
                 </Col>
                 <input type="file" hidden ref={imageInput} name="host_image" onChange={onChangeImage} />
-                <Col md={4} offset={2}>
+                <Col>
                     <ButtonWrapper style={{ marginTop: '30%' }} cyan onClick={onClickImageUpload} >사진 업로드</ButtonWrapper>
                 </Col>
-            </RowFirst>
+            </RowFirst> */}
             
             <RowWrapper>
                 <Col md={3}><label>업체명</label></Col>
@@ -107,17 +127,18 @@ const HostAccountForm = ({type, form, onChange, onChangeImage, onSubmit , hostIm
             <RowWrapper>
                 <Col md={3}><label>소개</label></Col>
                 <Col md={20} offset={1}>
-                    <Input.TextArea required style={{ resize: 'none' }} rows={7} name="about" onChange={onChange} value={form.about} />
+                    <Input.TextArea required style={{ resize: 'none' }} rows={7} name="about" onChange={onChange} value={form.about} className="textarea" />
                 </Col>
             </RowWrapper>
 
             <RowWrapper>
-            <Col md={4} offset={10}>
-            <ButtonWrapper cyan htmlType="submit">{text}</ButtonWrapper>
+            <Col md={5} offset={10}>
+                <ButtonWrapper cyan htmlType="submit">{text}</ButtonWrapper>
             </Col>
             </RowWrapper>
         </HostAccountBlock>
         </Content>
+        </AllBlock>
     )
 }
 

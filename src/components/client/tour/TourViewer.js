@@ -26,6 +26,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { message } from 'antd';
 
 
 const TourViewerBlock = styled(Responsive)`
@@ -38,6 +39,19 @@ const TourViewerBlock = styled(Responsive)`
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+    .reviewImg {
+        border: 0;
+    }
+    .noReviewFirst {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: ${palette.gray[7]};
+    }
+    .noReviewSecond {
+        font-size: 1rem;
+        font-weight: 700;
+        color: ${palette.cyan[5]};
+    }
 `;
 
 const tourMainBlock = styled.div`
@@ -71,7 +85,7 @@ const IconsDescripBox = styled.div`
 `;
 
 const ReviewPreviewBox = styled.div`
-    margin: 0.9rem 0 1.5rem 0;
+    margin: 0.9rem 0 0.3rem 0;
     .previewTitle {
         display: flex;
         align-items: center;
@@ -100,11 +114,11 @@ const ReviewPreviewBox = styled.div`
 
 const TourMaterials = styled.div`
     border-top: 1px solid ${palette.gray[4]};
-    padding: 1rem;
-    font-size: 0.98rem;
+    padding: 1rem 0;
+    font-size: 0.85rem;
     font-weight: 520;
     .materialsTitles {
-        font-size: 1.29rem;
+        font-size: 1.1rem;
         font-weight: 750;
         margin: 0 0 0.5rem 0;
     }
@@ -118,9 +132,9 @@ const SideMenuBlock = styled.div`
         height: 300px;
     }
 `;
-const AffixHelper = styled.div`
-    margin-top: 154rem;
-`;
+/* const AffixHelper = styled.div`
+    margin-top: 145rem;
+`; */
 const BookingBox = styled.div`
     display: flex;
     flex-direction: column;
@@ -199,7 +213,7 @@ const ButtonWidthMarginTop = styled(Button)`
 
 const HostTitleBox = styled.div`
     margin: 1rem 0 -1rem 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 620;
     display: flex;
     justify-content: space-between;
@@ -262,7 +276,7 @@ const InputSelect = withStyles((theme) => ({
     },
   })(Rating);
 
-  const map = require('../../../image/map.png');
+  
 
   // accordion 스타일
 
@@ -285,10 +299,22 @@ const InputSelect = withStyles((theme) => ({
 
 
 
+const TourViewer = ({ tour, woojong, error, loading, actionButtons, ownPost, tourId, user,
+    onChange, onChangeOption, onPaymentPage }) => {
 
+    const hideImgWhenError = e => {
+            e.target.onerror = null;
+            e.target.style.display = "none";
+    };
 
+    const onclick = () => {
+        return message.info('로그인이 필요합니다.');
+    }
 
-const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) => {
+    function disabledDate(current) {
+        // Can not select days before today and today
+        return current < moment().endOf('today');
+      }
 
   // 에러 발생 시
   if (error) {
@@ -302,17 +328,15 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
   if (loading || !tour) {
     return null;
   }
-
-    /* antd 데이트피커 이벤트 핸들러 */
-    function onChange(date, dateString) {
-    } 
-
-    function handleChange(value) {
-      }
+    //옵션 선택 함수
+    // function handleChange(e) {
+    //     return e.target.value;
+    // }
 
     /* const [container, setContainer] = useState(null); */
 
     const { title, about, Images, price, option } = tour;
+    const { timeInfo, langInfo, carIcon, transInfo, reviewCount, reviewScore, noReview1, noReview2, reviewCommnet, reviewPhoto, inclusion1, inclusion2, inclusion3, notIncluded1, notIncluded2, notIncluded3, course1, course2, course3, course4, address, tourLocationMap, refund1, refund2, refund3, refund4, howToUse1, howToUse2, howToUse3, howToUse4, howToUse5, hostAvatar, hostName} = woojong;
 
     return (
         <ConfigProvider locale={locale}>
@@ -329,12 +353,16 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
 
                         <IconsDescripBox>
                             <div className="iconDescrip">
-                                <TimerIcon style={{marginRight:'0.5rem'}} />
-                                2시간 소요
+                                {<TimerIcon style={{marginRight:'0.5rem'}} />}
+                                {timeInfo}
                             </div>
                             <div className="iconDescrip">
                                 <LanguageIcon style={{marginRight:'0.5rem'}} />
-                                한국어
+                                {langInfo}
+                            </div>
+                            <div className="iconDescrip">
+                                {carIcon}
+                                {transInfo}
                             </div>
                         </IconsDescripBox>
 
@@ -352,24 +380,23 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
                         <ReviewPreviewBox>
                             <div style={{display:'flex', alignItems:'center'}} > 
                                 <div className="previewTitle">
-                                    <StarRateRoundedIcon style={{fontSize:'2rem'}} />4.9 &nbsp;
+                                    <StarRateRoundedIcon style={{fontSize:'2rem'}} /> {reviewScore} &nbsp;
                                 </div>
                                 
-                                <div className="reviewCount">&middot; &nbsp;후기 1개</div>
+                                <div className="reviewCount">&middot; &nbsp;후기 {reviewCount}개</div>
                                 
                             </div>
-                            <div style={{padding:'1rem'}}>
-                                <Comment
-                                    /* actions={actions} */
+                            <div style={{padding:'1rem', display:'flex'}}>
+                                {reviewCommnet}
+                                {/* <Comment
                                     author={
                                         <div style={{display:'flex', alignItems:'center'}}>
                                             <div style={{fontSize:'0.9rem'}}>
-                                                김**
+                                                {reviewerName}
                                             </div>
                                             &nbsp;
                                             &nbsp;
                                             <StyledRating 
-                                                /* value={} */
                                                 readOnly
                                                 defaultValue={5}
                                                 size="small"
@@ -378,21 +405,31 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
                                     }
                                     avatar={
                                         <Avatar
-                                            /* size="small"  */
                                             icon={<UserOutlined />}
                                         />
                                     }
                                     content={
                                         <p>
-                                        너무 너무 좋고 즐거운 시간이였어요. 제주도 필수코스!ㅎㅎ 무조건 추천합니다! 또 올게요 :)
+                                            {review}
                                         </p>
                                     }
                                     datetime={
                                         <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                                        <span>{moment().fromNow()}</span>
+                                        <span>{reviewDay}</span>
                                         </Tooltip>
                                     }
-                                />
+                                /> */}
+                                <div>
+                                    <div className="noReviewFirst">
+                                        {noReview1}
+                                    </div>
+                                    <div className="noReviewSecond">
+                                        {noReview2}
+                                    </div>
+                                </div>
+                                <div style={{padding: '12px 0 0 40px'}}>
+                                {reviewPhoto}
+                                </div>
                             </div>
                             {/* <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
                                 <button className="watchReviewsBtn">
@@ -410,8 +447,9 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
                                 포함 사항
                             </div>
                             <div>
-                                1부 : 연극 <br />
-                                2부 : 제주 해녀 다이닝
+                                {inclusion1}<br />
+                                {inclusion2}<br />
+                                {inclusion3}
                             </div>
                         </TourMaterials>
                         <TourMaterials>
@@ -419,8 +457,9 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
                                 불포함 사항
                             </div>
                             <div>
-                                포함사항 제외한 일체 <br />
-                                개인사용비용(교통비등)
+                                {notIncluded1} <br />
+                                {notIncluded2}<br />
+                                {notIncluded3}
                             </div>
                         </TourMaterials>
                         <TourMaterials>
@@ -428,10 +467,10 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
                                 코스 소개
                             </div>
                             <div>
-                                20분 : 요리 시간 <br />
-                                30분 : 오븐 시간 <br />
-                                이후 : 식사 및 휴식시간 <br />
-                                *수업 및 현장 상황에 따라 소요시간은 변동이 있을 수 있습니다.
+                                {course1} <br />
+                                {course2} <br />
+                                {course3} <br />
+                                {course4}
                             </div>
                         </TourMaterials>
                         <TourMaterials>
@@ -439,13 +478,15 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
                                 위치 안내
                             </div>
                             <div>
-                                제주특별자치도 제주시 구좌읍 종달리 477-16
+                                {address}
                             </div>
                             <Image
+                                preview={false}
                                 width={342}
                                 height={220}
-                                src={map}
-                                style={{margin:'1rem 0'}}
+                                src={tourLocationMap}
+                                style={{margin:'1rem 0', border:'none'}}
+                                /* onerror={this.style.display='none'} */
                             />
                         </TourMaterials>
                         <TourMaterials>
@@ -456,19 +497,17 @@ const TourViewer = ({ tour, error, loading, actionButtons, ownPost, tourId }) =>
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                     >
-                                        <Typography className="materialsTitles">자주묻는 질문</Typography>
+                                        <Typography className="materialsTitles">사용 방법</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            
-Q. 신청한 프립은 어디서 확인하나요?<br />
-A. [마이]의 [신청 내역] 탭에서 신청하신 프립을 확인하실 수 있습니다.<br />
-Q. 두 명 이상 신청하고 싶은데 어떻게 하나요?<br />
-A. 프립에 따라 한 번에 여러명 신청하는 것이 가능하며, 1회 최대 신청 가능 인원 수는 프립별로 다를 수 있으니 확인 부탁드립니다. 추가 신청을 원하시는 경우 추가 결제가 가능하니 참고 부탁드립니다.<br />
-Q. 신청 취소 및 환불 처리는 어떻게 되나요?<br />
-A. 구매 후 14일 이내에는 신청 취소 및 환불이 가능합니다. 다만, 14일이 지나지 않았더라도 이미 호스트님과 일정 확정 후 출석체크가 완료되었다면 환불이 불가합니다.<br />
-Q. 예약을 하고 싶은데, 호스트님의 연락처는 어떻게 알 수 있나요?<br />
-A. 프립을 구매하시면 카카오톡 또는 문자로 호스트님의 연락처가 포함된 안내 메시지를 발송해드립니다.<br />
+                                            <div>
+                                                {howToUse1}<br />
+                                                {howToUse2}<br />
+                                                {howToUse3}<br />
+                                                {howToUse4}<br />
+                                                {howToUse5}<br />
+                                            </div>
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -487,16 +526,11 @@ A. 프립을 구매하시면 카카오톡 또는 문자로 호스트님의 연�
                                     <AccordionDetails>
                                         <Typography>
                                             <div>
-                                                티켓 구매 후 2주 이내 : 100% 환불<br />
-                                                티켓 구매 후 2주 후 : 환불 불가
-                                            </div>
-                                            &nbsp;
-                                            <div>
-                                                [환불 신청 방법]<br />
-                                                1. 해당 프립을 결제한 계정으로 로그인<br />
-                                                2. 내 프립 - 신청내역<br />
-                                                3. 취소를 원하는 프립 상세 정보 버튼 - 취소<br />
-                                                ※ 결제 수단에 따라 예금주, 은행명, 계좌번호 입력
+                                                {refund1}<br />
+                                                <br />
+                                                {refund2}<br />
+                                                {refund3}<br />
+                                                {refund4}<br />
                                             </div>
                                         </Typography>
                                     </AccordionDetails>
@@ -508,10 +542,10 @@ A. 프립을 구매하시면 카카오톡 또는 문자로 호스트님의 연�
                 <Col span={8}>
                     
                     <SideMenuBlock>
-                    <AffixHelper />
+                    {/* <AffixHelper /> */}
                     {/* <div className="affixBlock" ref={setContainer}> */}
                                  
-                    <Affix offsetBottom={300} /* offsetTop={100} target={() => container} */>
+                    <Affix /* offsetBottom={250} */ offsetTop={100} /* target={() => container} */>
                         <BookingBox>
                             <TourPrice>
                                 <div className="tour-price">{Number(price).toLocaleString()} 원</div>
@@ -530,6 +564,7 @@ A. 프립을 구매하시면 카카오톡 또는 문자로 호스트님의 연�
                                     placeholder="날짜 선택"
                                     locale={locale}
                                     className="datepicker"
+                                    disabledDate={disabledDate}
                                 />
                             </SearchBar>
                             <OptionSelectBox>
@@ -537,7 +572,7 @@ A. 프립을 구매하시면 카카오톡 또는 문자로 호스트님의 연�
                                 <Select
                                     /* value="age" */
                                     defaultValue={0}
-                                    onChange={handleChange}
+                                    onChange={onChangeOption}
                                     input={<InputSelect />}
                                 >
                                     
@@ -560,21 +595,43 @@ A. 프립을 구매하시면 카카오톡 또는 문자로 호스트님의 연�
                             <div className="counterBox">
                                 인원 <CounterContainer />
                             </div>
-                            <Link to="/tour/payment">
-                                <ButtonWidthMarginTop fullWidth cyan >여행하기</ButtonWidthMarginTop>
-                            </Link>
+                            {user ? 
+                                (
+                                    <ButtonWidthMarginTop
+                                        fullWidth
+                                        cyan
+                                        onClick={onPaymentPage}
+                                    >
+                                        여행하기
+                                    </ButtonWidthMarginTop>
+                                ):(
+                                    <Link to="/auth/login" onClick={onclick}>
+                                        <ButtonWidthMarginTop fullWidth cyan >여행하기</ButtonWidthMarginTop>
+                                    </Link>
+                                )}    
+
                             <hr width="125%" color="#CED4DA" size="1" style={{margin: '2rem 0 0 -2rem'}} />
                             <HostTitleBox>
                                 <div>
-                                    <Avatar /* size="small"*/ icon={<UserOutlined />} /> 
-                                    &nbsp; 해녀의 부엌 
+                                    <Avatar /* size="small"*/ icon={<UserOutlined />} src={hostAvatar} /> 
+                                    &nbsp; {hostName} 
                                 </div>
-                                    <Link to="/tour/inquiry">
-                                <div style={{display:'flex', alignItems:'center', flexDirection:'row'}}>
-                                    <MailOutlined style={{fontSize:'1rem'}} />
-                                    <div style={{fontSize:'0.95rem', marginLeft:'0.3rem'}}>문의하기</div>
-                                </div>
-                                    </Link>
+                                {user ? 
+                                    (  <Link to="/tour/inquiry">
+                                        <div style={{display:'flex', alignItems:'center', flexDirection:'row'}}>
+                                            <MailOutlined style={{fontSize:'1rem'}} />
+                                            <div style={{fontSize:'0.8rem', marginLeft:'0.3rem'}}>문의하기</div>
+                                        </div>
+                                        </Link>
+                                    ):(
+                                        <Link to="/auth/login" onClick={onclick}>
+                                        <div style={{display:'flex', alignItems:'center', flexDirection:'row'}}>
+                                            <MailOutlined style={{fontSize:'1rem'}} />
+                                            <div style={{fontSize:'0.8rem', marginLeft:'0.3rem'}}>문의하기</div>
+                                        </div>
+                                        </Link>
+                                    )}    
+                                    
                             </HostTitleBox>
                         </BookingBox>
                     </Affix>
@@ -586,17 +643,17 @@ A. 프립을 구매하시면 카카오톡 또는 문자로 호스트님의 연�
             </Row>
         </TourViewerBlock>
 
-        <hr width="100%" color="#CED4DA" size="1" style={{marginTop: '-0.8rem'}} />                            
+       {/* <hr width="100%" color="#CED4DA" size="1" style={{margin: '-0.8rem 0 2rem 0'}} />*/}
 
-        <RecommendTourBox>
+        {/* <RecommendTourBox>
             
             <div className="recommendTourTitle">
                 이런 여행은 어때요?
             </div>
             <TourListContainer />
-        </RecommendTourBox>
+        </RecommendTourBox> */}
             
-        </ConfigProvider>
+    </ConfigProvider>
    )
   };
   

@@ -20,7 +20,7 @@ import { Link, withRouter } from 'react-router-dom';
   `;
 
   const Title = styled.div`
-  margin: 1.2rem 0 1.5rem 3rem;
+  margin: 2.5rem 0 1.5rem 3rem;
   font-size: 1.5rem;
   font-weight: 900;
   color: ${palette.gray[7]};

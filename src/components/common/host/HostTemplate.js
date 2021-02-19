@@ -6,7 +6,7 @@ import SideMenu from './SideMenu';
 const HostViewerBlock = styled.div`
     display: flex;
     flex-direction: row;
-    width: 100%
+    width: 100%;
 `;
 
 

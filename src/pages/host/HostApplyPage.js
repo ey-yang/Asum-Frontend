@@ -3,7 +3,7 @@ import HeaderContainer from '../../containers/common/HeaderContainer';
 import HostTemplate from '../../components/common/host/HostTemplate';
 import HostApplyContainer from '../../containers/host/HostApplyContainer';
 import { useSelector } from 'react-redux';
-
+import LilFooter from '../../components/common/LilFooter';
 
 const HostRegisterPage = () => {
 
@@ -30,6 +30,7 @@ const HostRegisterPage = () => {
     <HostTemplate>
         <HostApplyContainer />
     </HostTemplate>
+    <LilFooter />
     </>
     )
 }

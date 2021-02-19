@@ -57,6 +57,7 @@ const App = () => {
       <Route component={InquiryPage} path="/tour/inquiry" />
 
 
+
       <Route component={HostApplyPage} path="/host/apply" />
       <Route component={HostAccountPage} path="/host/account" />
       <Route component={HostToursListPage} path="/host/tours" exact/>

@@ -2,6 +2,7 @@ import React from 'react';
 import HeaderContainer from '../../containers/common/HeaderContainer';
 import HostTemplate from '../../components/common/host/HostTemplate';
 import HostUploadImg from '../../components/host/HostUploadImg';
+import LilFooter from '../../components/common/LilFooter';
 
 const HostUploadImgPage = () => {
     return (
@@ -10,6 +11,7 @@ const HostUploadImgPage = () => {
         <HostTemplate>
             <HostUploadImg />
         </HostTemplate>
+        <LilFooter />
         </>
     )
 }

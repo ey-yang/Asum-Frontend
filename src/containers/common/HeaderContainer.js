@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import Header from '../../components/common/Header/Header';
 import HeaderAvatar from '../../components/common/Header/HeaderAvatar';
 import { logout } from '../../modules/user';
+import { withRouter } from 'react-router-dom';
 
-const HeaderContainer = () => {
+const HeaderContainer = ({ history }) => {
     const { user } = useSelector(({ user }) => ({ 
         user: user.user,
         
@@ -13,8 +14,9 @@ const HeaderContainer = () => {
     const dispatch = useDispatch();
     const onLogout = () => {
         dispatch(logout());
+        history.push('/')
     };
     return <Header user={user} /* image={image} */ onLogout={onLogout} />;
 };
 
-export default HeaderContainer;
+export default withRouter(HeaderContainer);

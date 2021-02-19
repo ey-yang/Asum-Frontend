@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderContainer from '../../containers/common/HeaderContainer';
 import Inquiry from '../../components/client/tour/Inquiry';
-import Footer from '../../components/common/Footer';
+import LilFooter from '../../components/common/LilFooter';
 
 
 const InquiryPage = () => {
@@ -9,7 +9,7 @@ const InquiryPage = () => {
         <>
             <HeaderContainer />
             <Inquiry />
-            <Footer />
+            
         </>
     );
 };
