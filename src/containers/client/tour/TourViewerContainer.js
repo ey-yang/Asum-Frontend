@@ -75,7 +75,7 @@ datetime={
     <StyledRating readOnly defaultValue={5} size="small" /> 
   </div>}
 avatar={<Avatar icon={<UserOutlined />}/>}
-content={<p>제주도에서의 색다른 경험을 할수있어 좋았어요☺ 그리고 체험 도중에 사진도 찍어주셔서 정말 감사합니다.</p>}
+content={<p>제주도에서의 색다른 경험을 할수있어 좋았어요☺ 체험 도중에 사진도 찍어주셔서 정말 감사합니다.</p>}
 datetime={
   <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
   <span>2020-11-02</span></Tooltip>}/>, inclusion1: "고구마, 감자, 풋귤차, 귤 한 봉지를 선물로 드려요~", inclusion2: "", notIncluded1: "취향에 맞는 음료나 주류는 개인이 지참", notIncluded2: "여행자 보험", course1: "귤 따기 (30분)" , course2: "불멍 (1시간)", course3: "소감 나누며 마무리 인사 (30분)" , course4: "", address: "제주각시이우다 (제주도 한경면 저지8길 15-1)", tourLocationMap: map3, refund1: "티켓 구매 후 2주 이내 : 100% 환불", refund2: "티켓 구매 후 2주 후 : 환불 불가", refund3: "※ 결제 수단에 따라 예금주, 은행명, 계좌번호 입력", refund4: "", howToUse1: "- 따뜻한 옷이나 담요 준비해주세요.", howToUse2: "- 불 냄새가 밸 수 있는 점 감안해 주세요.", howToUse3: "- 최소 모객 인원은 3명입니다. 모객되지 않을 시 투어가 취소될 수 있으며, 취소 시 미리 공지해드립니다.", howToUse4: "- 반드시 코로나 방역 지침 사항을 준수하며 참여해주시기 바랍니다.", howToUse5: "", hostAvatar: avatar5, hostName: "어썸테이블"}, {},
