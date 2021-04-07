@@ -94,7 +94,7 @@ const TourList = ({ tours, loading, error, user, tourId }) => {
               <Link to={`/tour/${tour.id}`}>
                 <CardMedia
                   className="cardMedia"
-                  image={`http://128.199.171.26:3000/${tour.Images[0].src}`}/* "https://source.unsplash.com/random" */
+                  image={`http://188.166.187.90:80/${tour.Images[0].src}`}/* "https://source.unsplash.com/random" */
                   title="Image title"
                   />
               </Link>
