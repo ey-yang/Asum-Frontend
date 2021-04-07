@@ -64,7 +64,7 @@ const HeaderAvatar = ({ onLogout, user }) => {
   return (
     <AvatarDiv>
       <Button disableFocusRipple disableRipple aria-controls="simple-menu" aria-haspopup="true" className="avatarBtn" onClick={handleClick}>
-        <Avatar size="large" src={`http://128.199.171.26:3000/${user.image}`} icon={<UserOutlined />} />
+        <Avatar size="large" src={`http://188.166.187.90:80/${user.image}`} icon={<UserOutlined />} />
       </Button>
       {user.host_approval !== true ?
          (<StyledMenu
